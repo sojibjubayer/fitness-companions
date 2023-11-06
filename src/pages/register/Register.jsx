@@ -63,7 +63,7 @@ const Register = () => {
     return (
         <div>
             <div className="hero min-h-screen ">
-                <div className="hero-content flex-col bg-[#FFA171] rounded my-5">
+                <div className="hero-content flex-col bg-teal-400 rounded my-5">
                     <div className="text-center lg:text-left">
                         <h1 className="text-2xl font-bold">Please Register!</h1>
                     </div>
@@ -118,7 +118,7 @@ const Register = () => {
                                 <span className="label-text">Accept <a className="text-blue-600" href="">Terms & Conditions</a></span>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn bg-[#FFA171]">Register</button>
+                                <button className="btn bg-teal-400">Register</button>
                             </div>
                             <Link to='/login'>
                                 <p>Already Registered? Please <span className="text-blue-600">Login</span></p>

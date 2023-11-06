@@ -39,7 +39,7 @@ const Login = () => {
     return (
         <div >
             <div className="hero md:min-h-screen  ">
-                <div className="hero-content flex-col bg-[#FFA171] rounded my-5">
+                <div className="hero-content flex-col bg-teal-400 rounded my-5">
                     <div className="text-center lg:text-left">
                         <h1 className="text-2xl  font-bold ">Login now!</h1>
                     </div>
@@ -63,9 +63,9 @@ const Login = () => {
                                 <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
-                                <button onClick={handleLogin2} className="btn bg-[#FFA171]">Login</button>
+                                <button onClick={handleLogin2} className="btn bg-teal-400">Login</button>
                                 <button onClick={handleSignInWithGoogle}
-                                    className="btn btn-ghost mt-3 bg-green-800 text-white">Login with 
+                                    className="btn btn-ghost mt-3 bg-teal-400 text-white">Login with Google 
                                     <img className="w-6" src={googlelogo} alt="" /></button>
                             </div>
                             <Link to='/register'>

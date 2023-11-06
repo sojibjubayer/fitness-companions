@@ -36,14 +36,14 @@ const Navbar = () => {
         <div className="">
 
 
-            <nav className="bg-teal-400 px-3 flex flex-col  md:flex-row items-center justify-between">
+            <nav className="border-b-4  border-teal-400 px-3 flex flex-col  md:flex-row items-center justify-between">
                 <div className="flex items-center">
                     <div className="hidden md:flex justify-start gap-2 items-center mr-[200px]">
                         <img src={navlogo} className="w-16 h-16 " alt="" />
-                        <h2 className="text-xl font-semibold text-white">Fitness Companions</h2>
+                        <h2 className="text-xl font-semibold ">Fitness Companions</h2>
                     </div>
 
-                    <ul className="flex items-center md:flex-row  gap-10 font-semibold md:text-xl">
+                    <ul className="flex items-center md:flex-row  gap-10 font-semibold md:text-xl ">
 
                         <li className="flex gap-10">{navLinks}</li>
                         <li className="flex gap-10  md:mt-0"> {
@@ -68,7 +68,7 @@ const Navbar = () => {
                 <div>
 
                     <div className=" flex items-center my-5 md:my-0">
-                        <div className="text-white flex items-center">
+                        <div className="text-teal-400 flex items-center">
 
                             {
                                 user && <img className="w-10 h-10 rounded-full mr-1" src={user.photoURL} alt='' />
@@ -81,7 +81,7 @@ const Navbar = () => {
 
                         {
                             user ?
-                                <Link to='/' onClick={handleLogOut} ><button className="btn btn-sm ml-3">Log Out</button></Link>
+                                <Link to='/' onClick={handleLogOut} ><button className="btn btn-sm ml-3 bg-teal-400">Log Out</button></Link>
                                 :
                                 <Link to='/login'><button className="btn btn-sm ml-3">Login</button></Link>
 
