@@ -46,9 +46,9 @@ const Services = () => {
                         <div className="flex flex-col w-[] border border-white bg-teal-400 my-6 p-3 rounded-lg">
                             <div className="flex space-x-4 items-center my-4 bg-teal-400">
                                 {/* provider image  */}
-                                <img alt="" src={service.providerImage} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
+                                <img alt="" src={service.pImage} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
                                 <div className="">
-                                    <a rel="noopener noreferrer" href="#" className="text-sm font-semibold text-white">{service.providerName}</a>
+                                    <a rel="noopener noreferrer" href="#" className="text-sm font-semibold text-white">{service.pName}</a>
 
                                 </div>
                             </div>

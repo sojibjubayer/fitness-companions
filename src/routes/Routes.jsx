@@ -6,11 +6,12 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import Services from "../pages/services/Services";
-import MyServices from "../pages/private/MyServices";
 import MySChedules from "../pages/private/MySChedules";
 import AddServices from "../pages/private/AddServices";
 import PrivateRoutes from "./PrivateRoutes";
 import ServiceDetails from "../pages/details/ServiceDetails";
+import ManageServices from "../pages/private/ManageServices";
+import UpdateService from "../pages/private/UpdateService";
 
 const router = createBrowserRouter([
     {
@@ -40,8 +41,10 @@ const router = createBrowserRouter([
                 element:<Register></Register>
             },
             {
-                path:'/My Services',
-                element:<PrivateRoutes><MyServices></MyServices></PrivateRoutes>
+                path:'/Manage Services',
+                element:<PrivateRoutes><ManageServices></ManageServices></PrivateRoutes>,
+                loader: () => fetch('http://localhost:5000/services')
+
             },
             {
                 path:'/My Schedules',
@@ -56,6 +59,12 @@ const router = createBrowserRouter([
                 element:<PrivateRoutes><ServiceDetails></ServiceDetails></PrivateRoutes>,
                 loader: () => fetch('http://localhost:5000/services')
             },
+            {
+                path:'/updateService/:id',
+                element:<UpdateService></UpdateService>,
+                loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)            
+            },
+           
             
             
         ]

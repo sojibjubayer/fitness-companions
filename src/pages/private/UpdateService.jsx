@@ -1,17 +1,24 @@
-
 import { useContext } from "react";
-import { Helmet } from "react-helmet";
-import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
+import { useLoaderData } from "react-router-dom";
 
 
-const AddServices = () => {
+
+
+const UpdateService = () => {
+  const targetService = useLoaderData();
+  const { _id, serviceName, serviceImage, shortD, serviceArea,price } = targetService;
+
+
+
   const {user}=useContext(AuthContext)
   console.log(user.displayName);
   console.log(user.photoURL);
 
 
-  const handleAddService = event => {
+  const handleUpdateService = event => {
     event.preventDefault()
     const form = event.target
     const pName = form.name.value;
@@ -20,34 +27,34 @@ const AddServices = () => {
     const serviceName = form.serviceName.value;
     const serviceImage = form.serviceImage.value;
     const shortD = form.sd.value;
-    let serviceArea = form.serviceArea.value;
+    const serviceArea = form.serviceArea.value;
     const price = form.price.value;
 
 
 
-    const newService = { pName,pEmail,pImage, serviceName, serviceImage, shortD, serviceArea, price }
-    console.log(newService);
+    const updateService = { pName,pEmail,pImage, serviceName, serviceImage, shortD, serviceArea, price }
+    console.log(updateService);
 
     // Send data to the server
-    fetch('http://localhost:5000/services', {
-      method: 'POST',
+    // Send data to the server
+    fetch(`http://localhost:5000/services/${_id}`, {
+      method: 'PUT',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(newService)
+      body: JSON.stringify(updateService)
     })
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           Swal.fire(
             'Good job!',
-            'You Successfully added a service!',
+            ' Successfully updated a product!',
             'success'
           )
         }
       })
-    // form.reset();
   }
 
 
@@ -56,7 +63,7 @@ const AddServices = () => {
       <div className=" p-2 md:w-[70%] mx-auto">
         <h2 className="text-xl md:text-2xl text-center my-3 border-b-2 font-bold">Add Your Service</h2>
 
-        <form onSubmit={handleAddService}>
+        <form onSubmit={handleUpdateService}>
           <div className=" md:flex gap-20">
             <div className="form-control md:w-1/2">
               <label className="label">
@@ -82,7 +89,7 @@ const AddServices = () => {
                 <span className="label-text">Service Name </span>
               </label>
               <label className="input-group">
-                <input type="text" name="serviceName" placeholder="service name" className="w-full input input-bordered" required />
+                <input type="text" name="serviceName" defaultValue={serviceName} className="w-full input input-bordered" required />
               </label>
             </div>
             <div className="form-control md:w-1/2">
@@ -90,7 +97,7 @@ const AddServices = () => {
                 <span className="label-text">Service Image URL</span>
               </label>
               <label className="input-group">
-                <input type="text" name="serviceImage" placeholder="Service Image URL" className="w-full input input-bordered" required />
+                <input type="text" name="serviceImage" defaultValue={serviceImage} className="w-full input input-bordered" required />
               </label>
             </div>
           </div>
@@ -100,7 +107,7 @@ const AddServices = () => {
                 <span className="label-text">Service Description</span>
               </label>
               <label className="input-group">
-                <textarea type="text" name="sd" placeholder="Describe your service in short" className="w-full input input-bordered" required />
+                <textarea type="text" name="sd" defaultValue={shortD} className="w-full input input-bordered" required />
               </label>
             </div>
 
@@ -112,7 +119,7 @@ const AddServices = () => {
               </label>
               <label className="input-group">
 
-                <input type="text" name="serviceArea" placeholder="Service Area" className="w-full input input-bordered" required />
+                <input type="text" name="serviceArea" defaultValue={serviceArea} className="w-full input input-bordered" required />
               </label>
             </div>
             <div className="form-control md:w-1/2">
@@ -120,19 +127,19 @@ const AddServices = () => {
                 <span className="label-text">Price</span>
               </label>
               <label className="input-group">
-                <input type="text" name="price" placeholder="Price" className="w-full input input-bordered" required />
+                <input type="text" name="price" defaultValue={price} className="w-full input input-bordered" required />
               </label>
             </div>
           </div>
-          <input type="submit" value="Add Service"
+          <input type="submit" value="Update Service"
             className="btn btn-ghost bg-teal-400 hover:bg-green-300 mb-10 text-yellow-950 font-bold mt-5" />
         </form>
       </div>
       <Helmet>
-        <title>FC | Add Services </title>
+        <title>FC | Update Services </title>
       </Helmet>
     </div>
   );
 };
 
-export default AddServices;
+export default UpdateService;
