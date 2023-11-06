@@ -38,7 +38,7 @@ const ManageServices = () => {
                             if (data.deletedCount > 0) {
                                 Swal.fire(
                                     'Deleted!',
-                                    'Your product has been deleted.',
+                                    'Your service has been deleted.',
                                     'success'
                                 )
                                 // filter from cart products and set it to remaining cart product
@@ -83,10 +83,10 @@ const ManageServices = () => {
                                     </div>
                                     <div className="flex justify-center">
                                     <Link to={`../updateService/${service._id}`}>
-                                        <button className="bg-[#FFA171] hover:bg-green-400 btn btn-sm">Update</button>
+                                        <button className="bg-teal-400 border-2 hover:bg-green-400  btn mr-5">Update Service</button>
                                     </Link>
                                         <button
-                                            onClick={() => handleDelete(service._id)} className="bg-amber-200 border-2  border-red-400 hover:bg-red-500 btn btn-sm mr-5">Delete from cart
+                                            onClick={() => handleDelete(service._id)} className="bg-teal-400 border-2  border-red-400 hover:bg-red-500 btn ">Delete Service
                                         </button>
                                     </div>
 

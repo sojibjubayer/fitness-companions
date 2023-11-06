@@ -61,7 +61,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/updateService/:id',
-                element:<UpdateService></UpdateService>,
+                element:<PrivateRoutes><UpdateService></UpdateService></PrivateRoutes>,
                 loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)            
             },
            

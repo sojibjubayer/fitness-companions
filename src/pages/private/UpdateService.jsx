@@ -10,12 +10,8 @@ import { useLoaderData } from "react-router-dom";
 const UpdateService = () => {
   const targetService = useLoaderData();
   const { _id, serviceName, serviceImage, shortD, serviceArea,price } = targetService;
-
-
-
   const {user}=useContext(AuthContext)
-  console.log(user.displayName);
-  console.log(user.photoURL);
+  
 
 
   const handleUpdateService = event => {
@@ -29,14 +25,11 @@ const UpdateService = () => {
     const shortD = form.sd.value;
     const serviceArea = form.serviceArea.value;
     const price = form.price.value;
-
-
-
     const updateService = { pName,pEmail,pImage, serviceName, serviceImage, shortD, serviceArea, price }
     console.log(updateService);
 
-    // Send data to the server
-    // Send data to the server
+    
+    // update a data 
     fetch(`http://localhost:5000/services/${_id}`, {
       method: 'PUT',
       headers: {
@@ -61,7 +54,7 @@ const UpdateService = () => {
   return (
     <div className="bg-teal-400">
       <div className=" p-2 md:w-[70%] mx-auto">
-        <h2 className="text-xl md:text-2xl text-center my-3 border-b-2 font-bold">Add Your Service</h2>
+        <h2 className="text-xl md:text-2xl text-center my-3 border-b-2 font-bold">Update Your Service</h2>
 
         <form onSubmit={handleUpdateService}>
           <div className=" md:flex gap-20">
@@ -132,11 +125,11 @@ const UpdateService = () => {
             </div>
           </div>
           <input type="submit" value="Update Service"
-            className="btn btn-ghost bg-teal-400 hover:bg-green-300 mb-10 text-yellow-950 font-bold mt-5" />
+            className="btn btn-ghost bg-green-300  mb-10 text-yellow-950 font-bold mt-5" />
         </form>
       </div>
       <Helmet>
-        <title>FC | Update Services </title>
+        <title>FC | Update Service </title>
       </Helmet>
     </div>
   );
