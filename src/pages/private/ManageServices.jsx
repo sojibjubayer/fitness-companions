@@ -56,7 +56,7 @@ const ManageServices = () => {
             <div className="min-h-screen">
                 <div>
                     <h2 className="md:w-[350px] mx-auto font-bold p-2 rounded-sm text-center text-xl rounded-b-xl md:text-2xl bg-orange-200 text-zinc-600  ">
-                        Your Booked Services </h2>
+                        Your Added Services </h2>
                 </div>
                 <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
 
