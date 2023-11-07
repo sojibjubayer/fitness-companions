@@ -1,18 +1,68 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { BallTriangle, Circles } from "react-loader-spinner";
 import { Link } from "react-router-dom";
 
 
 const Services = () => {
+
+
+
+    const [allData, setAllData] = useState()
+
+    const fontStyle = {
+        fontFamily: 'Inter'
+    }
+
+
+
+    const [tempoData, setTempoData] = useState('')
+    const [searchData, setSearchData] = useState('')
+    const handleSearchClick = () => {
+        setSearchData(tempoData)
+        console.log(tempoData);
+
+    }
+
+   
+
+
+
+
+
+
     // Fetch data using tanstack query
     const { data, isLoading, isFetching } = useQuery({
         queryKey: ['services'],
         queryFn: async () => {
             const response = await fetch(`http://localhost:5000/services`);
+            setAllData(data)
             return response.json();
 
         },
     });
+
+    useEffect(() => {
+        if (searchData) {
+
+            const filterData = data.filter(singleData => singleData.serviceName.toLowerCase() == searchData.toLowerCase())
+
+            if (filterData) {
+                setAllData(filterData)
+            }
+        }
+        else {
+            setAllData(data)
+        }
+    }, [data, searchData])
+    console.log(allData);
+
+
+
+
+
+
+
     if (isLoading) {
         return <Circles
             height="80"
@@ -37,11 +87,29 @@ const Services = () => {
         />
     }
     console.log(data);
+
+
+
+
+
+
     return (
-        <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
+        <div>
+             <div className="hero-content text-center text-neutral-content">
+                <div className="w-[600px] mx-auto flex">
+                    
+                    <input className="border border-teal-400  p-2 w-full rounded text-black " type="text" value={tempoData}
+                        onChange={(e) => setTempoData(e.target.value)}
+                        placeholder="Search services...." />
+
+                    <button style={fontStyle} onClick={handleSearchClick} className="p-2 rounded-r -ml-2 bg-indigo-300 text-white">Search</button>
+                </div>
+            </div>
+            <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
+           
 
             {
-                data.map(service =>
+                allData.map(service =>
                     <div key={service._id} >
                         <div className="flex flex-col h-[500px] border border-white bg-teal-400 my-6 py-3 rounded-lg">
                             <div className="flex space-x-4 items-center my-4 bg-teal-400">
@@ -72,6 +140,7 @@ const Services = () => {
                 )
             }
 
+        </div>
         </div>
     );
 };

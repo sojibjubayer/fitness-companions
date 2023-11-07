@@ -15,6 +15,7 @@ const MySchedules = () => {
     const firebaseUser = useContext(AuthContext)
     console.log(firebaseUser);
 
+ 
 
     return (
         <div>
