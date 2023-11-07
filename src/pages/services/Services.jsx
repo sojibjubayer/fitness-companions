@@ -10,9 +10,7 @@ const Services = () => {
 
     const [allData, setAllData] = useState()
 
-    const fontStyle = {
-        fontFamily: 'Inter'
-    }
+   
 
 
 
@@ -44,8 +42,7 @@ const Services = () => {
 
     useEffect(() => {
         if (searchData) {
-
-            const filterData = data.filter(singleData => singleData.serviceName.toLowerCase() == searchData.toLowerCase())
+            const filterData = data?.filter(singleData => singleData.serviceName.toLowerCase() == searchData.toLowerCase())
 
             if (filterData) {
                 setAllData(filterData)
@@ -55,10 +52,6 @@ const Services = () => {
             setAllData(data)
         }
     }, [data, searchData])
-    console.log(allData);
-
-
-
 
 
 
@@ -86,7 +79,7 @@ const Services = () => {
             visible={true}
         />
     }
-    console.log(data);
+    // console.log(data);
 
 
 
@@ -102,7 +95,7 @@ const Services = () => {
                         onChange={(e) => setTempoData(e.target.value)}
                         placeholder="Search services...." />
 
-                    <button style={fontStyle} onClick={handleSearchClick} className="p-2 rounded-r -ml-2 bg-indigo-300 text-white">Search</button>
+                    <button  onClick={handleSearchClick} className="p-2 rounded-r -ml-2 bg-indigo-300 text-white">Search</button>
                 </div>
             </div>
             <div className="grid gap-5 grid-cols-1 md:grid-cols-2">

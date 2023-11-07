@@ -68,7 +68,7 @@ const ServiceDetails = () => {
                   {/* provider image  */}
                   <img alt="" src={service.pImage} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
                   <div className="">
-                    <p rel="noopener noreferrer" href="#" className="text-sm font-semibold text-white">{service.providerName}</p>
+                    <p rel="noopener noreferrer" href="#" className="text-sm font-semibold text-white">{service.pName}</p>
                     <p className="text-sm font-semibold text-white">Location: {service.serviceArea}</p>
 
                   </div>
