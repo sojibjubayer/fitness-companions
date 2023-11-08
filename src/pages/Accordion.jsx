@@ -3,23 +3,23 @@
 const Accordion = () => {
     return (
         <div className="mb-10">
-            <h2 className="mt-10 text-xl font-bold p-2 rounded-sm text-black bg-white border border-teal-400 md:w-2/4">Common Questions & Answers</h2>
+            <h2 className="mt-10 text-xl font-bold p-2 rounded-sm text-teal-400 bg-white border border-teal-400 md:w-2/4">Q & A section</h2>
             <div className="collapse collapse-arrow bg-base-200 my-5">
                 <input type="radio" name="my-accordion-2" checked="checked" />
                 <div className="collapse-title text-xl font-medium">
                 Are your services available throughout the country?
                 </div>
                 <div data-aos="fade-right" data-aos-duration="2000"  className="collapse-content  ">
-                    <p>Yes, We cover 64 district with our services.</p>
+                    <p>Yes, We we have different service provider throughout the country.</p>
                 </div>
             </div>
             <div className="collapse collapse-arrow bg-base-200">
                 <input type="radio" name="my-accordion-2" />
                 <div className="collapse-title text-xl font-medium">
-                    Can we pay with bank card?
+                    Have you service products that can i buy from home?
                 </div>
                 <div  className="collapse-content">
-                    <p>Yes,we accept any kind of bank card.</p>
+                    <p>Yes,You can buy our products from home.</p>
                 </div>
             </div>
             <div className="collapse collapse-arrow bg-base-200 my-5">
