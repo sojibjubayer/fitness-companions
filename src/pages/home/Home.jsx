@@ -1,6 +1,6 @@
 import { BallTriangle, Circles } from "react-loader-spinner";
 import ImageSlider from "../ImageSlider";
-import TypeWriter from "../TypeWriter";
+// import TypeWriter from "../TypeWriter";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import Accordion from "../Accordion";
@@ -46,7 +46,7 @@ const Home = () => {
   return (
     <div className="min-h-screen ">
       <ImageSlider></ImageSlider>
-      <TypeWriter></TypeWriter>
+      {/* <TypeWriter></TypeWriter> */}
       <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
 
         {
@@ -55,7 +55,7 @@ const Home = () => {
               <div className="flex flex-col md:h-[550px] border border-white bg-teal-400 my-6 py-2 px-1 rounded-lg">
                 <div className="flex space-x-4 items-center my-4 bg-teal-400">
                   {/* provider image  */}
-                  <img alt="" src={service.pImage} className="object-cover w-12 h-14 rounded-full shadow dark:bg-gray-500" />
+                  <img alt="" src={service.pImage} className="object-cover w-12 h-20 rounded-full shadow dark:bg-gray-500" />
                   <div className="">
                     <a rel="noopener noreferrer" href="#" className="text-sm font-semibold text-white">{service.pName}</a>
 
