@@ -56,7 +56,7 @@ const Home = () => {
               <div className="flex flex-col md:h-[550px] border border-white bg-teal-400 my-6 py-2 px-1 rounded-lg">
                 <div className="flex space-x-4 items-center my-4 bg-teal-400">
                   {/* provider image  */}
-                  <img alt="" src={service.pImage} className="object-cover w-12 h-20 rounded-full shadow dark:bg-gray-500" />
+                  <img alt="" src={service.pImage} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
                   <div className="">
                     <a rel="noopener noreferrer" href="#" className="text-sm font-semibold text-white">{service.pName}</a>
 
@@ -64,7 +64,7 @@ const Home = () => {
                 </div>
                 <div className="">
                   {/* service image  */}
-                  <img src={service.serviceImage} alt="" className="object-cover w-full mb-4 md:h-52  " />
+                  <img src={service.serviceImage} alt="" className="object-cover w-full mb-4 md:h-60  " />
                   <div className="space-y-2 ">
                     <h2 className="mb-1 text-xl font-semibold text-center">{service.serviceName}</h2>
                     <p className="text-sm ">{service.shortD}</p>

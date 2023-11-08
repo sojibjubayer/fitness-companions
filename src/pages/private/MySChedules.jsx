@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import MyScheduleStatusRow from "./MyScheduleStatusRow";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 // import { Helmet } from "react-helmet";
 
 
@@ -160,6 +161,9 @@ const MySchedules = () => {
                 </table>
 
             </div>
+            <Helmet>
+                <title>FC | My Schedule </title>
+            </Helmet>
         </div>
     )
 }
