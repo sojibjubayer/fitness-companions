@@ -11,7 +11,7 @@ const ManageServices = () => {
     const [services, setServices] = useState([])
 
     const { user } = useContext(AuthContext)
-    const url = `http://localhost:5000/services?email=${user?.email}`;
+    const url = `https://fitness-companions-server.vercel.app/services?email=${user?.email}`;
 
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const ManageServices = () => {
 
                     console.log('deleted');
 
-                    fetch(`http://localhost:5000/services/${_id}`, {
+                    fetch(`https://fitness-companions-server.vercel.app/services/${_id}`, {
                         method: 'DELETE',
                     })
                         .then(res => res.json())

@@ -1,32 +1,29 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import MyScheduleStatusRow from "./MyScheduleStatusRow";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-// import { Helmet } from "react-helmet";
+
 
 
 const MySchedules = () => {
-    // const bookedServices = useLoaderData()
+   const loadedData=useLoaderData()
     const firebaseUser = useContext(AuthContext)
-    const { user } = useContext(AuthContext)
-    const url = `http://localhost:5000/bookedServices?email=${user?.email}`;
-    const [allData, setAllData] = useState([])
-
-
+    const url = `https://fitness-companions-server.vercel.app/bookedServices`;
+    const [allData, setAllData] = useState(loadedData)
     useEffect(() => {
-        fetch(url, { credentials: 'include' })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setAllData(data)
+        
+        axios.get(url, { withCredentials: true })
+            .then(res => {
+                setAllData(res.data)
+                console.log(res.data);
             })
     }, [url])
     
     const myBookings = allData.filter(target => target.userEmail == firebaseUser.user.email);
     const myPendingWorks = allData.filter(target => target.SPEmail == firebaseUser.user.email);
-    console.log(myPendingWorks);
+    // console.log(myPendingWorks);
     const [pendingWorks, setPendingWorks] = useState(myPendingWorks)
 
 
@@ -38,10 +35,10 @@ const MySchedules = () => {
                 setPendingWorks(res.data)
             })
     }, [url])
-    console.log(pendingWorks);
+    console.log(allData);
 
     const handleStatus = (id,selectedStatus) => {
-        fetch(`http://localhost:5000/bookedServices/${id}`, {
+        fetch(`https://fitness-companions-server.vercel.app/bookedServices/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -74,7 +71,7 @@ const MySchedules = () => {
                 
 
                 {
-                    myBookings.length > 0 ? myBookings?.map(service =>
+                    myBookings?.length > 0 ? myBookings?.map(service =>
                         <div key={service._id} >
 
                             <div className="flex flex-col h-[500px] border border-white bg-teal-400 my-6 py-3 px-2 rounded-lg">
@@ -141,7 +138,7 @@ const MySchedules = () => {
                     <tbody>
 
                         {
-                            pendingWorks.length > 0 ? pendingWorks?.map(service =>
+                            pendingWorks?.length > 0 ? pendingWorks?.map(service =>
                                 <MyScheduleStatusRow
                                     key={service._id}
                                     service={service}

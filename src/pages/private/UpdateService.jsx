@@ -30,7 +30,7 @@ const UpdateService = () => {
 
     
     // update a data 
-    fetch(`http://localhost:5000/services/${_id}`, {
+    fetch(`https://fitness-companions-server.vercel.app/services/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'

@@ -23,7 +23,7 @@ const Login = () => {
 
                 //get access token
                 const user = { email }
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                axios.post('https://fitness-companions-server.vercel.app/jwt', user, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
                         if (res.data.success) {
@@ -43,7 +43,7 @@ const Login = () => {
                 console.log(result.user.email);
                 //get access token
                 const user = result.user.email
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                axios.post('https://fitness-companions-server.vercel.app/jwt', user, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
                         if (res.data.success) {

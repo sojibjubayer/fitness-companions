@@ -33,7 +33,7 @@ const ServiceDetails = () => {
     console.log(bookedService);
 
     // Send data to the server
-    fetch('http://localhost:5000/bookedServices', {
+    fetch('https://fitness-companions-server.vercel.app/bookedServices', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

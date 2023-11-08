@@ -16,7 +16,7 @@ const Navbar = () => {
         logOut()
             .then(() => {
                 console.log('successfully logged out')
-                axios.post('http://localhost:5000/logout',user,{withCredentials:true})
+                axios.post('https://fitness-companions-server.vercel.app/logout',user,{withCredentials:true})
                 .then(res=>{
                     console.log(res.data)
                 })

@@ -28,7 +28,7 @@ const Services = () => {
     const { data, isLoading, isFetching } = useQuery({
         queryKey: ['services'],
         queryFn: async () => {
-            const response = await fetch(`http://localhost:5000/services`,{credentials:'include'});
+            const response = await fetch(`https://fitness-companions-server.vercel.app/services`,{credentials:'include'});
             setAllData(data)
             return response.json();
 

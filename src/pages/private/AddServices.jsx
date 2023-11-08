@@ -29,7 +29,7 @@ const AddServices = () => {
     console.log(newService);
 
     // Send data to the server
-    fetch('http://localhost:5000/services', {
+    fetch('https://fitness-companions-server.vercel.app/services', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

@@ -44,13 +44,15 @@ const router = createBrowserRouter([
             {
                 path:'/Manage Services',
                 element:<PrivateRoutes><ManageServices></ManageServices></PrivateRoutes>,
-                loader: () => fetch('http://localhost:5000/services')
+                
 
             },
             {
                 path:'/My Schedules',
                 element:<PrivateRoutes><MySChedules></MySChedules></PrivateRoutes>,
-                loader:()=>fetch('http://localhost:5000/bookedServices')
+                loader: () => fetch('https://fitness-companions-server.vercel.app/bookedServices')
+
+                
             },
             {
                 path:'/Add Services',
@@ -59,17 +61,17 @@ const router = createBrowserRouter([
             {
                 path:'/services/:id',
                 element:<PrivateRoutes><ServiceDetails></ServiceDetails></PrivateRoutes>,
-                loader: () => fetch('http://localhost:5000/services')
+                loader: () => fetch('https://fitness-companions-server.vercel.app/services')
             },
             {
                 path:'/SchServices/:id',
                 element:<PrivateRoutes><SchServiceDetails></SchServiceDetails></PrivateRoutes>,
-                loader: () => fetch('http://localhost:5000/bookedServices')
+                loader: () => fetch('https://fitness-companions-server.vercel.app/bookedServices')
             },
             {
                 path:'/updateService/:id',
                 element:<PrivateRoutes><UpdateService></UpdateService></PrivateRoutes>,
-                loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)            
+                loader:({params})=>fetch(`https://fitness-companions-server.vercel.app/services/${params.id}`)            
             },
            
             

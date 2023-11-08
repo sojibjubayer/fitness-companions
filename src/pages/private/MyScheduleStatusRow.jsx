@@ -11,7 +11,7 @@ const MyScheduleStatusRow = ({ service, handleStatus }) => {
         setSelectedOption(selectedValue);
         console.log(selectedValue);
         handleStatus(_id, selectedValue)
-        // window.location.reload();
+        window.location.reload();
     };
    
     return (
