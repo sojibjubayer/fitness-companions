@@ -30,7 +30,7 @@ const Login = () => {
                             navigate(location?.state ? location.state : '/')
                         }
                     })
-                // navigate('/')
+                navigate('/')
             })
             .catch(error => {
                 console.error(error)
