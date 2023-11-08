@@ -6,6 +6,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
+import { Helmet } from 'react-helmet';
 
 
 const Register = () => {
@@ -134,6 +135,9 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+            <Helmet>
+                <title>FC | Register </title>
+            </Helmet>
         </div>
     );
 };

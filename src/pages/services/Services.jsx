@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { BallTriangle, Circles } from "react-loader-spinner";
 import { Link } from "react-router-dom";
 
@@ -128,6 +129,9 @@ const Services = () => {
             }
 
         </div>
+        <Helmet>
+                <title>FC | Services </title>
+            </Helmet>
         </div>
     );
 };

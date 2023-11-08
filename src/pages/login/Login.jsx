@@ -5,6 +5,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { AuthContext } from '../../provider/AuthProvider';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
     const { signIn, signInWithGoogle, user } = useContext(AuthContext);
@@ -20,15 +21,15 @@ const Login = () => {
                 console.log(result.user);
                 toast.success('Successfully signed in.');
 
-                 //get access token
-                 const user = { email }
-                 axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
-                     .then(res => {
-                         console.log(res.data);
-                         if (res.data.success) {
-                             navigate(location?.state ? location.state : '/')
-                         }
-                     })
+                //get access token
+                const user = { email }
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.success) {
+                            navigate(location?.state ? location.state : '/')
+                        }
+                    })
                 // navigate('/')
             })
             .catch(error => {
@@ -40,15 +41,15 @@ const Login = () => {
         signInWithGoogle()
             .then(result => {
                 console.log(result.user.email);
-                 //get access token
-                 const user =  result.user.email 
-                 axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
-                     .then(res => {
-                         console.log(res.data);
-                         if (res.data.success) {
-                             navigate(location?.state ? location.state : '/')
-                         }
-                     })
+                //get access token
+                const user = result.user.email
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.success) {
+                            navigate(location?.state ? location.state : '/')
+                        }
+                    })
             })
             .catch()
     }
@@ -85,7 +86,7 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <button onClick={handleLogin2} className="btn bg-teal-400">Login</button>
                                 <button onClick={handleSignInWithGoogle}
-                                    className="btn btn-ghost mt-3 bg-teal-400 text-white">Login with Google 
+                                    className="btn btn-ghost mt-3 bg-teal-400 text-white">Login with Google
                                     <img className="w-6" src={googlelogo} alt="" /></button>
                             </div>
                             <Link to='/register'>
@@ -96,6 +97,9 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <Helmet>
+                <title>FC | Login </title>
+            </Helmet>
         </div>
     );
 };

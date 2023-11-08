@@ -1,11 +1,12 @@
 import { BallTriangle, Circles } from "react-loader-spinner";
 import ImageSlider from "../ImageSlider";
-// import TypeWriter from "../TypeWriter";
+import TypeWriter from "../TypeWriter";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import Accordion from "../Accordion";
 import AboutUs from "../AboutUs";
 import ContactUs from "../ContactUs";
+import { Helmet } from "react-helmet";
 
 
 
@@ -46,7 +47,7 @@ const Home = () => {
   return (
     <div className="min-h-screen ">
       <ImageSlider></ImageSlider>
-      {/* <TypeWriter></TypeWriter> */}
+      <TypeWriter></TypeWriter>
       <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
 
         {
@@ -91,6 +92,10 @@ const Home = () => {
       <Accordion></Accordion>
       <AboutUs></AboutUs>
       <ContactUs></ContactUs>
+
+      <Helmet>
+        <title>FC | Home </title>
+      </Helmet>
 
     </div>
   );
