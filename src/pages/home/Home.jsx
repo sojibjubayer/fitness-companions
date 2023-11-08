@@ -52,10 +52,10 @@ const Home = () => {
         {
           data?.slice(0, 4).map(service =>
             <div key={service._id} >
-              <div className="flex flex-col h-[500px] border border-white bg-teal-400 my-6 py-2 px-1 rounded-lg">
+              <div className="flex flex-col md:h-[550px] border border-white bg-teal-400 my-6 py-2 px-1 rounded-lg">
                 <div className="flex space-x-4 items-center my-4 bg-teal-400">
                   {/* provider image  */}
-                  <img alt="" src={service.pImage} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
+                  <img alt="" src={service.pImage} className="object-cover w-12 h-14 rounded-full shadow dark:bg-gray-500" />
                   <div className="">
                     <a rel="noopener noreferrer" href="#" className="text-sm font-semibold text-white">{service.pName}</a>
 
