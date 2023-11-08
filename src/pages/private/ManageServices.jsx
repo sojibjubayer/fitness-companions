@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
@@ -7,8 +7,21 @@ import { Helmet } from "react-helmet";
 
 
 const ManageServices = () => {
-    const getServices = useLoaderData()
-    const [services, setServices] = useState(getServices)
+    // const getServices = useLoaderData()
+    const [services, setServices] = useState([])
+
+    const { user } = useContext(AuthContext)
+    const url = `http://localhost:5000/services?email=${user?.email}`;
+
+
+    useEffect(() => {
+        fetch(url, { credentials: 'include' })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setServices(data)
+            })
+    }, [url])
     console.log(services);
 
     const firebaseUser = useContext(AuthContext)

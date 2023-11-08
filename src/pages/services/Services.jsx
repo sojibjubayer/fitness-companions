@@ -22,18 +22,12 @@ const Services = () => {
 
     }
 
-   
-
-
-
-
-
 
     // Fetch data using tanstack query
     const { data, isLoading, isFetching } = useQuery({
         queryKey: ['services'],
         queryFn: async () => {
-            const response = await fetch(`http://localhost:5000/services`);
+            const response = await fetch(`http://localhost:5000/services`,{credentials:'include'});
             setAllData(data)
             return response.json();
 
@@ -102,7 +96,7 @@ const Services = () => {
            
 
             {
-                allData.map(service =>
+                allData?.map(service =>
                     <div key={service._id} >
                         <div className="flex flex-col h-[500px] border border-white bg-teal-400 my-6 py-3 rounded-lg">
                             <div className="flex space-x-4 items-center my-4 bg-teal-400">

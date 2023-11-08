@@ -1,16 +1,19 @@
+
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 const MyScheduleStatusRow = ({ service, handleStatus }) => {
     const { _id, serviceImage, serviceName, userEmail, date, specialInstruction, price, status } = service;
-    const [selectedOption, setSelectedOption] = useState('pending');
+    const [selectedOption, setSelectedOption] = useState('');
 
     const handleSelectChange = (event) => {
         const selectedValue = event.target.value;
         setSelectedOption(selectedValue);
         console.log(selectedValue);
         handleStatus(_id, selectedValue)
+        // window.location.reload();
     };
+   
     return (
 
 
@@ -45,16 +48,24 @@ const MyScheduleStatusRow = ({ service, handleStatus }) => {
                         <span className="text-blue-500">Completed</span>
                     ) : status === 'inProgress' ? (
                         <span className="text-yellow-500">In Progress</span>
-                    ) : (
-                        <select  id="statusDropdown" onChange={handleSelectChange} value={selectedOption}>
-                            <option value="pending" style={{ color: 'red' }} >Pending</option>
-                            <option value="inProgress">In Progress</option>
-                            <option value="completed">Completed</option>
-                        </select>
-                    )
+                    ) :
+                    <span className="text-red-500">Pending</span>
+
+
                 }
 
             </td>
+            <td>
+            
+                        <select  id="statusDropdown" onChange={handleSelectChange} value={selectedOption}>
+                            {/* <option value=""  >Select Option</option> */}
+                            <option value="pending"  >Pending</option>
+                            <option value="inProgress">In Progress</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    
+            </td>
+            
 
         </tr >
 

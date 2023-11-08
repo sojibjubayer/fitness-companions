@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import MyScheduleStatusRow from "./MyScheduleStatusRow";
 import axios from "axios";
@@ -7,14 +7,24 @@ import axios from "axios";
 
 
 const MySchedules = () => {
-    const bookedServices = useLoaderData()
+    // const bookedServices = useLoaderData()
     const firebaseUser = useContext(AuthContext)
     const { user } = useContext(AuthContext)
     const url = `http://localhost:5000/bookedServices?email=${user?.email}`;
+    const [allData, setAllData] = useState([])
 
 
-    const myBookings = bookedServices.filter(target => target.userEmail == firebaseUser.user.email);
-    const myPendingWorks = bookedServices.filter(target => target.SPEmail == firebaseUser.user.email);
+    useEffect(() => {
+        fetch(url, { credentials: 'include' })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setAllData(data)
+            })
+    }, [url])
+    
+    const myBookings = allData.filter(target => target.userEmail == firebaseUser.user.email);
+    const myPendingWorks = allData.filter(target => target.SPEmail == firebaseUser.user.email);
     console.log(myPendingWorks);
     const [pendingWorks, setPendingWorks] = useState(myPendingWorks)
 
@@ -26,13 +36,6 @@ const MySchedules = () => {
             .then(res => {
                 setPendingWorks(res.data)
             })
-
-        // fetch(url)
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         // console.log(data)
-        //         setPendingWorks(data)
-        //     })
     }, [url])
     console.log(pendingWorks);
 
@@ -67,6 +70,7 @@ const MySchedules = () => {
             </div>
 
             <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
+                
 
                 {
                     myBookings.length > 0 ? myBookings?.map(service =>
@@ -91,7 +95,7 @@ const MySchedules = () => {
                                     </div>
                                 </div>
                                 <div className="flex justify-center">
-                                    <Link to={`/services/${service._id}`}>
+                                    <Link to={`/SchServices/${service._id}`}>
                                         <button className="bg-teal-400 hover:bg-rose-200 btn  mr-5">View Details</button>
                                     </Link>
                                 </div>
@@ -102,9 +106,11 @@ const MySchedules = () => {
                         :
                         <div className="mt-2 md:ml-80">
 
-                            <div>
+                          
+                                <div>
                                 <h3 className="text-2xl font-bold my-10 text-red-400">No Booking available now!</h3>
                             </div>
+                            
 
 
                         </div>
@@ -128,6 +134,7 @@ const MySchedules = () => {
                             <th>Instruction</th>
                             <th>Price</th>
                             <th>Status</th>
+                            <th>Change Status</th>
                         </tr>
                     </thead>
                     <tbody>

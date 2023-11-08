@@ -3,6 +3,9 @@ import ImageSlider from "../ImageSlider";
 import TypeWriter from "../TypeWriter";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import Accordion from "../Accordion";
+import AboutUs from "../AboutUs";
+import ContactUs from "../ContactUs";
 
 
 
@@ -47,9 +50,9 @@ const Home = () => {
       <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
 
         {
-          data.slice(0, 4).map(service =>
+          data?.slice(0, 4).map(service =>
             <div key={service._id} >
-              <div className="flex flex-col h-[500px] border border-white bg-teal-400 my-6 py-3 rounded-lg">
+              <div className="flex flex-col h-[500px] border border-white bg-teal-400 my-6 py-2 px-1 rounded-lg">
                 <div className="flex space-x-4 items-center my-4 bg-teal-400">
                   {/* provider image  */}
                   <img alt="" src={service.pImage} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
@@ -69,7 +72,7 @@ const Home = () => {
                 </div>
                 <div className="flex justify-center">
                   <Link to={`/services/${service._id}`}>
-                    <button className="bg-teal-400 hover:bg-rose-200 btn  mr-5">View Details</button>
+                    <button className="bg-teal-400 hover:bg-rose-200 btn md:btn mt-1 btn-sm  mr-5">View Details</button>
                   </Link>
                 </div>
 
@@ -85,6 +88,9 @@ const Home = () => {
           <button className="btn bg-teal-400 text-white hover:bg-green-500">Show All</button>
         </Link>
       </div>
+      <Accordion></Accordion>
+      <AboutUs></AboutUs>
+      <ContactUs></ContactUs>
 
     </div>
   );

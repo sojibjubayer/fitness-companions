@@ -4,6 +4,7 @@ import googlelogo from '../../assets/googlelogo.webp'
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { AuthContext } from '../../provider/AuthProvider';
+import axios from 'axios';
 
 const Login = () => {
     const { signIn, signInWithGoogle, user } = useContext(AuthContext);
@@ -18,7 +19,17 @@ const Login = () => {
             .then(result => {
                 console.log(result.user);
                 toast.success('Successfully signed in.');
-                navigate('/')
+
+                 //get access token
+                 const user = { email }
+                 axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                     .then(res => {
+                         console.log(res.data);
+                         if (res.data.success) {
+                             navigate(location?.state ? location.state : '/')
+                         }
+                     })
+                // navigate('/')
             })
             .catch(error => {
                 console.error(error)
@@ -28,7 +39,16 @@ const Login = () => {
     const handleSignInWithGoogle = () => {
         signInWithGoogle()
             .then(result => {
-                console.log(result.user);
+                console.log(result.user.email);
+                 //get access token
+                 const user =  result.user.email 
+                 axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                     .then(res => {
+                         console.log(res.data);
+                         if (res.data.success) {
+                             navigate(location?.state ? location.state : '/')
+                         }
+                     })
             })
             .catch()
     }

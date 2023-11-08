@@ -3,6 +3,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa";
 import navlogo from '../../src/assets/logo.avif'
+import axios from "axios";
 
 
 
@@ -13,7 +14,13 @@ const Navbar = () => {
     const { logOut, user } = useContext(AuthContext);
     const handleLogOut = () => {
         logOut()
-            .then(() => console.log('successfully logged out'))
+            .then(() => {
+                console.log('successfully logged out')
+                axios.post('http://localhost:5000/logout',user,{withCredentials:true})
+                .then(res=>{
+                    console.log(res.data)
+                })
+            })
             .catch(error => console.log(error))
     }
     const [showServices, setShowServices] = useState(false);

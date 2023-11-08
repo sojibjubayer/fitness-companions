@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import {  useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 // import toast from "react-hot-toast";
 
 
-const ServiceDetails = () => {
+const SchServiceDetails = () => {
 
   // const params = useParams()
   const params = useParams()
@@ -198,50 +198,14 @@ const ServiceDetails = () => {
 
 
       {/* Other services by the same provider  */}
-      <div>
-                <h2 className="md:w-[350px] mx-auto font-bold p-2 rounded-sm text-center text-xl rounded-b-xl md:text-xl bg-orange-200 text-zinc-600  ">
-                    Other Services by Same Provider </h2>
-            </div>
+     
 
 
-      <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
-        {
-           services?.filter(target => target.pEmail == providerEmail).map(service =>
-            <div key={service._id} >
-
-              <div className="flex flex-col h-[500px] border border-white bg-teal-300 my-6 py-3 rounded-lg">
-                <div className="flex space-x-4 items-center my-4 bg-teal-400">
-                  {/* provider image  */}
-                  <img alt="" src={service.pImage} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
-                  <div className="">
-                    <a rel="noopener noreferrer" href="#" className="text-sm font-semibold text-white">{service.pName}</a>
-
-                  </div>
-                </div>
-                <div className="">
-                  {/* service image  */}
-                  <img src={service.serviceImage} alt="" className="object-cover w-full mb-4 md:h-52  " />
-                  <div className="space-y-2 ">
-                    <h2 className="mb-1 text-xl font-semibold text-center">{service.serviceName}</h2>
-                    <p className="text-sm ">{service.shortD}</p>
-                    <p><span className="bg-teal-400 text-white p-1">Price:</span> {service.price}</p>
-                  </div>
-                </div>
-                <div className="flex justify-center">
-                  <Link to={`../services/${service._id}`}>
-                    <button className="bg-teal-400 hover:bg-rose-200 btn  mr-5">View Details</button>
-                  </Link>
-                </div>
-
-              </div>
-            </div>
-          )
-}
-      </div>
+     
 
 
     </div>
   );
 };
 
-export default ServiceDetails;
+export default SchServiceDetails;

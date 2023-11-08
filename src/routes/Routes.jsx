@@ -12,6 +12,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import ServiceDetails from "../pages/details/ServiceDetails";
 import ManageServices from "../pages/private/ManageServices";
 import UpdateService from "../pages/private/UpdateService";
+import SchServiceDetails from "../pages/details/SchServiceDetails";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
                 path:'/services/:id',
                 element:<PrivateRoutes><ServiceDetails></ServiceDetails></PrivateRoutes>,
                 loader: () => fetch('http://localhost:5000/services')
+            },
+            {
+                path:'/SchServices/:id',
+                element:<PrivateRoutes><SchServiceDetails></SchServiceDetails></PrivateRoutes>,
+                loader: () => fetch('http://localhost:5000/bookedServices')
             },
             {
                 path:'/updateService/:id',
