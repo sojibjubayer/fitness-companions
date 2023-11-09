@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa";
-import navlogo from '../../src/assets/logo.avif'
+import logo from '../assets/logo.jpg'
 import axios from "axios";
 
 
@@ -46,7 +46,7 @@ const Navbar = () => {
             <nav className="border-b-4  border-teal-400 px-3 flex flex-col  md:flex-row items-center justify-between">
                 <div className="flex items-center">
                     <div className="hidden md:flex justify-start gap-2 items-center mr-[200px]">
-                        <img src={navlogo} className="w-16 h-16 " alt="" />
+                        <img src={logo} className="w-20 h-16 " alt="" />
                         <h2 className="text-xl font-semibold ">Fitness Companions</h2>
                     </div>
 
@@ -90,7 +90,7 @@ const Navbar = () => {
                             user ?
                                 <Link to='/' onClick={handleLogOut} ><button className="btn btn-sm ml-3 bg-teal-400">Log Out</button></Link>
                                 :
-                                <Link to='/login'><button className="btn btn-sm ml-3">Login</button></Link>
+                                <Link to='/login'><button className="btn btn-sm bg-teal-400 ml-3">Login</button></Link>
 
                         }
 

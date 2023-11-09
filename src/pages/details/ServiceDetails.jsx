@@ -54,12 +54,15 @@ const ServiceDetails = () => {
 
 
       })
-    // form.reset();
+
   }
   const targetService = services.find(service => service._id === params.id);
   const providerEmail = targetService ? targetService.pEmail : null;
-  console.log(providerEmail);
-
+  const verticalLineStyle = {
+    borderLeft: '3px solid #fff',
+    height: '60px', 
+    margin: '0 10px', 
+  };
   return (
     <div className="">
       <div className='grid grid-cols-1  py-7'>
@@ -67,28 +70,25 @@ const ServiceDetails = () => {
           services.filter(target => target._id == params.id).map(service =>
             <div key={service._id} >
               <div className="flex flex-col w-[] border border-white bg-teal-100 my-6 p-3 rounded-lg">
-              <div className="md:flex md:flex-row flex-col gap-10">
-              <div className="md:w-1/3">
-                <img className="w-full md:w-[450px] h-[250px] md:h-[330px] rounded-r-xl" src={service.serviceImage} alt="" />
-              </div>
-              <div className="p-2 md:w-2/3">
-                <h3 className="  text-xl font-bold pt-2">{service.pName}</h3>
-                <h3 className="  text-base font-bold pt-2">Location: {service.serviceArea}</h3>
-                <h3 className="  text-base font-bold pt-2">Service Name: {service.serviceName}</h3>
-                {/* <h3 className=" text-base font-bold pt-2">Category: {service.shortD}</h3> */}
-                <div className="flex  ">
-                  <h3 className="mr-5  text-base font-bold pt-2"><span className="font-bold">Price:</span> {service.price}$</h3>
-                  {/* <h3 className=" text-base font-bold pt-2"><span className="font-bold">Rating:</span> */}
-                    {/* <span className="bg-white px-1 rounded ml-1">{brand.rating}</span></h3> */}
-                </div>
-                <div className="flex">
-                  <p className="mt-4"> <span className="font-bold">Details:</span> <span className=""> {service.shortD}</span></p>
-                </div>
-                
-              </div>
-            </div>
+                <div className="md:flex md:flex-row flex-col gap-10">
+                  <div className="md:w-1/3">
+                    <img className="w-full md:w-[450px] h-[250px] md:h-[330px] rounded-r-xl" src={service.serviceImage} alt="" />
+                  </div>
+                  <div className="p-2 md:w-2/3">
+                    <h3 className="  text-xl font-bold pt-2">{service.pName}</h3>
+                    <h3 className="  text-base font-bold pt-2">Location: {service.serviceArea}</h3>
+                    <h3 className="  text-base font-bold pt-2">Service Name: {service.serviceName}</h3>
+                    <div className="flex  ">
+                      <h3 className="mr-5  text-base font-bold pt-2"><span className="font-bold">Price:</span> {service.price}$</h3>
+                    </div>
+                    <div className="flex">
+                      <p className="mt-4"> <span className="font-bold">Details:</span> <span className=""> {service.shortD}</span></p>
+                    </div>
 
-                
+                  </div>
+                </div>
+
+
                 <div className="flex justify-center">
 
                   {/* Modal*/}
@@ -167,12 +167,7 @@ const ServiceDetails = () => {
                               </label>
                             </div>
 
-
-
-
                             <button
-
-
                               className="btn bg-teal-400 mt-5">
                               <input type="submit" value="Purchase Now"
                                 className="  font-semibold " />
@@ -194,49 +189,53 @@ const ServiceDetails = () => {
       </div>
 
 
-
-
-
       {/* Other services by the same provider  */}
       <div>
-                <h2 className="md:w-[350px] mx-auto font-bold p-2 rounded-sm text-center text-xl rounded-b-xl md:text-xl bg-orange-200 text-zinc-600  ">
-                    Other Services by Same Provider </h2>
-            </div>
+        <h2 className="md:w-[350px] mx-auto font-bold p-2 rounded-sm text-center text-xl rounded-b-xl md:text-xl bg-teal-400 text-zinc-600 my-4 ">
+          Other Services by Same Provider </h2>
+      </div>
 
 
       <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
         {
-           services?.filter(target => target.pEmail == providerEmail).map(service =>
+          services?.filter(target => target.pEmail == providerEmail).map(service =>
             <div key={service._id} >
 
-              <div className="flex flex-col h-[500px] border border-white bg-teal-300 my-6 py-3 rounded-lg">
-                <div className="flex space-x-4 items-center my-4 bg-teal-400">
+              <div className="flex flex-col md:h-[550px]  border-pink-300 border-y-4 bg-teal-50 mb-6 py-2  rounded-lg">
+                <div className="flex  items-center -mt-5  bg-teal-200 rounded-t-lg">
+                  <div>
+                    <h3 style={{ fontFamily: 'cursive' }} className="text-xl ml-3">provider</h3>
+                  </div>
+                  <div>
+                    <div style={verticalLineStyle}></div>
+                  </div>
                   {/* provider image  */}
                   <img alt="" src={service.pImage} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
                   <div className="">
-                    <a rel="noopener noreferrer" href="#" className="text-sm font-semibold text-white">{service.pName}</a>
+                    <p rel="noopener noreferrer" href="#" className="text-lg font-semibold ml-3">{service.pName}</p>
 
                   </div>
                 </div>
                 <div className="">
                   {/* service image  */}
-                  <img src={service.serviceImage} alt="" className="object-cover w-full mb-4 md:h-52  " />
-                  <div className="space-y-2 ">
-                    <h2 className="mb-1 text-xl font-semibold text-center">{service.serviceName}</h2>
-                    <p className="text-sm ">{service.shortD}</p>
-                    <p><span className="bg-teal-400 text-white p-1">Price:</span> {service.price}</p>
+                  <img src={service.serviceImage} alt="" className="object-cover w-full mb-4 md:h-64  " />
+                  <div className="space-y-2 px-1">
+                    <h2 className="mb-1 text-xl font-semibold text-center">
+                      <span style={{ fontFamily: 'cursive' }} className="">service name: </span>{service.serviceName}</h2>
+                    <p className=" ">{service.shortD}</p>
+                    <button className="btn btn-sm flex justify-center mt-4">price: {service.price} $</button>
                   </div>
                 </div>
                 <div className="flex justify-center">
-                  <Link to={`../services/${service._id}`}>
-                    <button className="bg-teal-400 hover:bg-rose-200 btn  mr-5">View Details</button>
+                  <Link to={`/services/${service._id}`}>
+                    <button className="bg-pink-300 hover:bg-rose-200 rounded-lg p-2 w-[200px] mt-2 md:mt-11 ">View Details</button>
                   </Link>
                 </div>
 
               </div>
             </div>
           )
-}
+        }
       </div>
 
 

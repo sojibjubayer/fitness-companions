@@ -5,7 +5,7 @@ const AboutUs=()=> {
     <section className="bg-gray-100 p-8 md:p-16">
       <div className="flex flex-col md:flex-row items-center justify-between">
         <div className="md:w-1/2 mr-4">
-          <h2 className="text-2xl text-teal-400 md:text-4xl font-bold mb-4">About Us</h2>
+          <h2 className="text-2xl text-teal-400 md:text-xl font-bold mb-4">About Us</h2>
           <p className="text-gray-700 leading-relaxed">
             Welcome to our fitness website! We are dedicated to helping you achieve your fitness goals and lead a healthier, more active lifestyle. Our team of experienced trainers and nutritionists is here to guide you on your fitness journey.
           </p>

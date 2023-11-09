@@ -6,7 +6,7 @@ import Footer from "./Footer";
 const Main = () => {
     return (
         <div className="">
-            <div className="w-[95%] mx-auto ">
+            <div className="md:w-[90%] mx-auto ">
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>
