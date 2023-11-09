@@ -59,9 +59,9 @@ const ServiceDetails = () => {
   const targetService = services.find(service => service._id === params.id);
   const providerEmail = targetService ? targetService.pEmail : null;
   const verticalLineStyle = {
-    borderLeft: '3px solid #fff',
-    height: '60px', 
-    margin: '0 10px', 
+    borderLeft: '3px solid #F2F2F2',
+    height: '60px',
+    margin: '0 10px',
   };
   return (
     <div className="">
@@ -75,14 +75,27 @@ const ServiceDetails = () => {
                     <img className="w-full md:w-[450px] h-[250px] md:h-[330px] rounded-r-xl" src={service.serviceImage} alt="" />
                   </div>
                   <div className="p-2 md:w-2/3">
-                    <h3 className="  text-xl font-bold pt-2">{service.pName}</h3>
-                    <h3 className="  text-base font-bold pt-2">Location: {service.serviceArea}</h3>
-                    <h3 className="  text-base font-bold pt-2">Service Name: {service.serviceName}</h3>
-                    <div className="flex  ">
-                      <h3 className="mr-5  text-base font-bold pt-2"><span className="font-bold">Price:</span> {service.price}$</h3>
+                    <div className="flex  items-center -mt-5">
+                      <div>
+                        <h3 style={{ fontFamily: 'cursive' }} className="text-xl ml-3">provider</h3>
+                      </div>
+                      <div>
+                        <div style={verticalLineStyle}></div>
+                      </div>
+                      {/* provider image  */}
+                      <img alt="" src={service.pImage} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
+                      <div className="ml-6">
+                        <p rel="noopener noreferrer" href="#" className="text-lg font-semibold ml-3">{service.pName}</p>
+                        <h3 className="  text-base font-bold pt-2">Location: {service.serviceArea}</h3>
+                      </div>
                     </div>
+                    <h2 className="mb-1 text-xl font-semibold  mt-10">
+                      <span style={{ fontFamily: 'cursive' }} className="">service name: </span>{service.serviceName}</h2>
                     <div className="flex">
-                      <p className="mt-4"> <span className="font-bold">Details:</span> <span className=""> {service.shortD}</span></p>
+                      <p className="mt-2"> <span className="font-bold">Details:</span> <span className=""> {service.shortD}</span></p>
+                    </div>
+                    <div className="flex  ">
+                      <h3 className="mr-5  text-base font-bold mt-1"><span className="font-bold">Price:</span> {service.price}$</h3>
                     </div>
 
                   </div>

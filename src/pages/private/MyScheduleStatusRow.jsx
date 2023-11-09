@@ -26,17 +26,17 @@ const MyScheduleStatusRow = ({ service, handleStatus }) => {
                     </div>
                 </div>
             </td>
-            <td>
+            <td className='w-full'>
                 {serviceName}
             </td>
-            <td>
+            <td className='w-full'>
                 {userEmail}
             </td>
 
-            <td>
+            <td className='w-[200px]'>
                 {date}
             </td>
-            <td>
+            <td className='w-full'>
                 {specialInstruction}
             </td>
             <td>

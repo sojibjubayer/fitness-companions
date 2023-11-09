@@ -23,7 +23,7 @@ const Footer = () => {
                 <div>
                     <form>
                         <header className="text-xl font-semibold text-teal-400">Newsletter</header>
-                        <fieldset className="form-control w-80">
+                        <fieldset className="form-control md:w-80">
                             <label className="label">
                                 <span className="label-text">Enter your email address</span>
                             </label>
@@ -48,7 +48,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <p className='text-center bg-base-200 my-4 text-sm'>Developed by <span className='italic'>Jubayer sojib</span></p>
+            <p className='text-center bg-base-200 py-4 text-sm'>Developed by <span className='italic'>Jubayer sojib</span></p>
         </div>
     );
 };

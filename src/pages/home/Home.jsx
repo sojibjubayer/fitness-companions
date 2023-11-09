@@ -49,6 +49,8 @@ const Home = () => {
     margin: '0 10px', 
   };
   console.log(data);
+
+
   return (
     <div className="min-h-screen ">
       <ImageSlider></ImageSlider>
@@ -60,6 +62,7 @@ const Home = () => {
         {
           data?.slice(0, 4).map(service =>
             <div key={service._id} >
+
               <div className="flex flex-col md:h-[550px]  border-pink-300 border-y-4 bg-teal-50 mb-6 py-2  rounded-lg">
                 <div className="flex  items-center -mt-5  bg-teal-200 rounded-t-lg">
                   <div>
@@ -72,7 +75,6 @@ const Home = () => {
                   <img alt="" src={service.pImage} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
                   <div className="">
                     <p rel="noopener noreferrer" href="#" className="text-lg font-semibold ml-3">{service.pName}</p>
-
                   </div>
                 </div>
                 <div className="">
@@ -90,8 +92,8 @@ const Home = () => {
                     <button className="bg-pink-300 hover:bg-rose-200 rounded-lg p-2 w-[200px] mt-2 md:mt-11 ">View Details</button>
                   </Link>
                 </div>
-
               </div>
+              
             </div>
           )
         }
