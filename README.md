@@ -14,3 +14,5 @@
 - At manage service page user can update and delete his/her services.
 - At My Schedule page user can control status.
 - At add product page verified user can add services.
+
+**Used Technology:React,Daisy UI, Node.js,Express.js, jwt, MongoDB
