@@ -15,4 +15,5 @@
 - At My Schedule page user can control status.
 - At add product page verified user can add services.
 
-**Used Technology:React,Daisy UI, Node.js,Express.js, jwt, MongoDB
+## Used Technology:
+- React,Daisy UI, Node.js,Express.js, jwt, MongoDB
