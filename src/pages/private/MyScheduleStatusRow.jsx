@@ -42,7 +42,7 @@ const MyScheduleStatusRow = ({ service, handleStatus }) => {
             <td>
                 {price}
             </td>
-            <td>
+            <td className='w-full'>
                 {
                     status === 'completed' ? (
                         <span className="text-blue-500">Completed</span>

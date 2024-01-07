@@ -61,8 +61,7 @@ const Services = () => {
             </div>
 
             <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
-                {data
-                    .filter((singleData) => !searchData || singleData.serviceName.toLowerCase().includes(searchData.toLowerCase()))
+                {data?.filter((singleData) => !searchData || singleData.serviceName.toLowerCase().includes(searchData.toLowerCase()))
                     .map((service) => (
                         <div key={service._id}>
                             <div className="flex flex-col md:h-[550px] border-pink-300 border-y-4 bg-teal-50 mb-6 py-2 rounded-lg">

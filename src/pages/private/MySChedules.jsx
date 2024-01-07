@@ -11,6 +11,8 @@ const MySchedules = () => {
     const loadedData = useLoaderData()
     const firebaseUser = useContext(AuthContext)
     const url = `https://fitness-companions-server.vercel.app/bookedServices`;
+    const url2 = `https://fitness-companions-server.vercel.app/services?email=${firebaseUser.user?.email}`;
+
     const [allData, setAllData] = useState(loadedData)
     useEffect(() => {
 
@@ -115,7 +117,7 @@ const MySchedules = () => {
 
             {/* my pending works  */}
             <div>
-                <h2 className="md:w-[350px] mx-auto font-bold p-2 rounded-sm text-center text-xl rounded-b-xl md:text-2xl bg-teal-200 mb-4 text-zinc-600  ">
+                <h2 className="font-bold p-2 rounded-sm text-center text-xl rounded-b-xl md:text-2xl bg-teal-200 mb-4 text-zinc-600  ">
                     My Pending works </h2>
             </div>
 

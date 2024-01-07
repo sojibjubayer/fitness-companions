@@ -20,6 +20,7 @@ const Home = () => {
 
     },
   });
+  console.log(data)
   if (isLoading) {
     return <Circles
       height="80"
@@ -48,7 +49,7 @@ const Home = () => {
     height: '60px', 
     margin: '0 10px', 
   };
-  console.log(data);
+  // console.log(data);
 
 
   return (
@@ -93,7 +94,7 @@ const Home = () => {
                   </Link>
                 </div>
               </div>
-              
+
             </div>
           )
         }
